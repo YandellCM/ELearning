@@ -1,8 +1,12 @@
-const express = require("express");
-const path = require("path");
+import express from "express";
+import path from "url";
+import { fileURLToPath } from "url";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -17,7 +21,7 @@ const cursos = [
         duracion: "1.49 Hrs",
         estudiantes: "30 Students",
         imagen: "/img/course-1.jpg",
-        rating: "(123)"
+        rating: "(125)"
     },
     {
         titulo: "Graphic Design Fundamentals",
@@ -49,7 +53,7 @@ app.get("/", (req, res) => {
 
 app.get("/about", (req, res) => {
     res.render("about", {
-        title: "About - eLEARNING",
+        title: "About Us - eLEARNING",
         currentPage: "about"
     });
 });
@@ -71,7 +75,7 @@ app.get("/team", (req, res) => {
 
 app.get("/testimonial", (req, res) => {
     res.render("testimonial", {
-        title: "Testimonial - eLEARNING",
+        title: "Testimonials - eLEARNING",
         currentPage: "testimonial"
     });
 });
